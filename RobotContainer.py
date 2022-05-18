@@ -4,6 +4,7 @@ from commands.drivestraight import DriveStraight
 import wpilib
 import math
 from commands.defaultDrive import DefaultDrive
+from commands.turn import Turn
 
 
 class RobotContainer:
@@ -26,6 +27,8 @@ class RobotContainer:
         self.simpleAuto = DriveStraight(
             7 * 12 / (4 * math.pi) * 360, self.robotDrive
         )
+        
+        self.turn_auto = Turn(90, self.robotDrive)
 
         # A complex auto routine that drives forward, drops a hatch, and then drives backward.
         # self.complexAuto = ComplexAuto(self.drive, self.hatch)
@@ -34,7 +37,8 @@ class RobotContainer:
         self.chooser = wpilib.SendableChooser()
 
         # Add commands to the autonomous command chooser
-        self.chooser.setDefaultOption("Simple Auto", self.simpleAuto)
+        # self.chooser.setDefaultOption("Simple Auto", self.simpleAuto)
+        self.chooser.setDefaultOption("Turn Auto", self.turn_auto)
         # self.chooser.addOption("Complex Auto", self.complexAuto)
 
         # Put the chooser on the dashboard
