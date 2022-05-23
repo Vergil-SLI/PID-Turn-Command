@@ -18,4 +18,5 @@ class Turn(commands2.PIDCommand):
         )
 
     def isFinished(self) -> bool:
+        print("turn status", self.getController().atSetpoint())
         return self.getController().atSetpoint()
